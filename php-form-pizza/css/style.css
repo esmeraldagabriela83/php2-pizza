@@ -1,0 +1,978 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: MintCream;
+}
+
+/*                                                   Style the navigation menu */
+.topnav {
+  overflow: hidden;
+  background-color: DarkGoldenRod;
+  position: relative;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+@media only screen and (min-width: 960px) {
+  .topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+@media only screen and (min-width: 960px) {
+  .topnav #myLinks {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .topnav #myLinks {
+    display: none;
+  }
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: MintCream;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a:hover {
+  text-decoration: overline;
+  transition: 0.5s;
+}
+
+.topnav a.active:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 959px) {
+  .topnav a {
+    box-shadow: 0.3px 0.3px 0.35px 0.35px gray;
+  }
+}
+
+/* Style the hamburger menu */
+@media only screen and (max-width: 959px) {
+  .topnav a.icon {
+    background: #785807;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .topnav a.icon {
+    display: none;
+  }
+}
+
+/* Add a  background color on mouse-over */
+.topnav a:hover {
+  background-color: MintCream;
+  color: #785807;
+  font-weight: bold;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+  background-color: #785807;
+  color: MintCream;
+}
+
+/*                                                          shopping cart                   */
+/*-----------------------------------------------------------------------*/
+.content-section {
+  margin: 1em;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5em;
+}
+
+.section-header {
+  text-decoration: overline;
+  margin-bottom: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5em;
+  color: DarkGoldenRod;
+}
+
+.section-header:nth-of-type(1) {
+  padding-top: 1.5em;
+}
+
+.btn {
+  text-align: center;
+  vertical-align: middle;
+  padding: .67em .67em;
+  cursor: pointer;
+}
+
+.btn-primary {
+  margin-top: 1.5em;
+  color: mintcream;
+  background-color: DarkGoldenRod;
+  border: none;
+  border-radius: .3em;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+.btn-primary:hover {
+  background-color: #785807;
+}
+
+.shop-item {
+  margin: 1.5em;
+}
+
+.shop-item-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #785807;
+  margin-bottom: 1.5em;
+}
+
+.shop-item-image {
+  height: 11em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+.shop-item-details {
+  /* display: flex; */
+  text-align: center;
+  padding: 1em;
+}
+
+.shop-item-price {
+  /* flex-grow: 1; */
+  color: #785807;
+}
+
+.shop-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #785807;
+}
+
+.cart-column {
+  border-bottom: 1px solid #785807;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 960px) {
+  .cart-column {
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-row {
+    display: flex;
+  }
+
+  .cart-item {
+    width: 70%;
+  }
+
+  .cart-price {
+    width: 15%;
+  }
+
+  .cart-quantity {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .cart-column {
+    display: block;
+    text-align: center;
+  }
+
+  .cart-row {
+    display: block;
+  }
+
+  .cart-item {
+    width: 100%;
+    padding: 1.5em;
+  }
+
+  .cart-price {
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  .cart-quantity {
+    width: 100%;
+    padding: 1.5em;
+  }
+}
+
+.cart-price {
+  font-size: 1.2em;
+  color: #785807;
+}
+
+.cart-item-title {
+  color: #785807;
+  margin-left: .5em;
+  font-size: 1.5em;
+}
+
+.cart-item-image {
+  width: 7.5em;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+.btn-danger {
+  color: MintCream;
+  background-color: DarkGoldenRod;
+  border: none;
+  border-radius: .3em;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+.btn-danger:hover {
+  background-color: #785807;
+}
+
+.cart-quantity-input {
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid DarkGoldenRod;
+  background-color: mintcream;
+  color: DarkGoldenRod;
+  padding: 0;
+  text-align: center;
+  font-size: 1.5em;
+  margin-right: 25px;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+.cart-row:last-child {
+  border-bottom: 1px solid #785807;
+}
+
+.cart-row:last-child .cart-column {
+  border: none;
+}
+
+.cart-total {
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.cart-total-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #785807;
+  margin-right: 10px;
+}
+
+.cart-total-price {
+  color: #785807;
+  font-size: 1.1em;
+}
+
+.btn-purchase {
+  display: block;
+  margin: 10px auto 20px auto;
+  font-size: 1.75rem;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+/*----------------------------------shopping cart --------------------------------------------------------*/
+
+/* fixed button on shop page */
+.floating-btn {
+    cursor: pointer;
+    padding: 12px 20px;
+    position: fixed;
+    bottom: 130px;
+    right: 20px;
+    z-index: 3;
+  }
+
+  .floating-btn:focus {
+    outline: none;
+  }
+
+@media only screen and (max-width:1415px) {
+  .floating-btn {
+    display:none;
+  }
+}
+
+/* fixed button on shop page */
+
+/*empty div*/
+.clear {
+  clear: both;
+}
+
+/*empty div*/
+/*----------------------------------------slideshow w 3 school---------------------------------------------------*/
+/*https://www.w3schools.com/howto/howto_js_slideshow.asp*/
+.slideshow-container {
+  max-width: 100vw;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: mintcream;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: DarkGoldenRod;
+}
+
+/* Caption text */
+/* .text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+} */
+/* Number text (1/3 etc) */
+/* .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+} */
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 1em;
+  width: 1em;
+  margin: 0 2px;
+  background-color: #785807;
+  border-radius: 10px;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+.active, .dot:hover {
+  background-color: DarkGoldenRod;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+/*-----------------------------------------------------------slideshow w 3 school-----------------------------------*/
+/*home click on button to choose image----------------------------------------------------------------------------------*/
+/*for screen*/
+
+.sliderClickButton {
+  padding: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#containerImageScreen {
+  height: 22em;
+  width:22em;
+  border-radius: 10px;
+  margin-top: 3em;
+  margin-bottom: 1.5em;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+  /* padding:0 5em; */
+  background-image: radial-gradient(circle, DarkGoldenRod, MintCream, #785807);
+}
+
+#containerImageScreen:hover {
+  background-image: radial-gradient(circle, #785807, MintCream, DarkGoldenRod);
+}
+
+#containerImageScreen p {
+  margin-top: -3em;
+  color: DarkGoldenRod;
+  font-weight: bold;
+  text-decoration: overline;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderButtonsClick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5em;
+}
+
+.sliderButtonsClick button {
+  margin: 0.75em 0.75em;
+}
+
+ @media only screen and (max-width: 959px) {
+  .slider-screen{
+    display:none;
+  }
+}
+/*for screen*/
+
+/*for mobile*/
+
+ #containerImageMobile {
+   height: 11em;
+   border-radius: 10px;
+   margin-top: 3em;
+   margin-bottom: 1.5em;
+   box-shadow: 1px 1px 1.5px 1.5px gray;
+   /* padding:0 5em; */
+   background-image: radial-gradient(circle, DarkGoldenRod, MintCream, #785807);
+ }
+
+ #containerImageMobile:hover {
+   background-image: radial-gradient(circle, #785807, MintCream, DarkGoldenRod);
+ }
+
+ #containerImageMobile p {
+   margin-top: -3em;
+   color: DarkGoldenRod;
+   font-weight: bold;
+   text-decoration: overline;
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ @media only screen and (min-width: 960px) {
+  .slider-mobile{
+    display:none;
+  }
+ }
+
+/*for mobile*/
+/*home click on button to choose image---------------------------------------------------------------------------------------*/
+
+/*image comparison slider !!!*/
+#centreDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-comparison-slider {
+  position: relative;
+  width: 30em;
+  height: 22em;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 1.5em;
+}
+
+.image-container-original,
+.image-container-edited {
+  position: absolute;
+  width: 30em;
+  height: 22em;
+}
+
+.image-container-original {
+  width: 15em;
+  overflow: hidden;
+}
+
+.container-comparison-slider img {
+  border-radius: 10px;
+  width: 30em;
+  height: 22em;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+.container-comparison-slider .slider {
+  /* width: 1.5px; */
+  background: DarkGoldenRod;
+  border-radius: 10px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 959px) {
+  .container-comparison-slider {
+    width: 20em;
+    height: 15em;
+  }
+
+  .image-container-original,
+  .image-container-edited {
+    width: 20em;
+    height: 15em;
+  }
+
+  .image-container-original {
+    width: 10em;
+  }
+
+  .container-comparison-slider img {
+    width: 20em;
+    height: 15em;
+  }
+}
+
+/*image comparison slider !!!*/
+/* ----------------------------------------------------------home page before-after-slider */
+.mysliderBeforeAfter {
+  padding: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.myslider-img {
+  height: 22em;
+  width: 17em;
+  border-radius: 10px;
+  margin-bottom: 1.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 959px) {
+  .myslider-img {
+    height: 15em;
+    width: 10em;
+  }
+}
+
+.mysliderButtons .btn {
+  margin: 0 0.75em;
+}
+
+/* --------------------------------------------------home page before-after-slider */
+/*--------------------------------------------------------------------------------------previous and next multiple images slider*/
+.slider {
+  padding: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.slider-img {
+  height: 22em;
+  width: 30em;
+  border-radius: 10px;
+  margin-bottom: 1.5em;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+}
+
+@media only screen and (max-width: 959px) {
+  .slider-img {
+    height: 15em;
+    width: 20em;
+  }
+}
+
+.sliderButtons .btn {
+  margin: 0 0.75em;
+}
+
+/*--------------------------------------------------------------------------previous and next multiple images slider*/
+/*------------------------------------------------------------------------------change image using onclick(event)-----------------------*/
+.centreONclick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.onCLICK-IMG:hover {
+  cursor: pointer;
+}
+
+.onCLICK-IMG {
+  transition: 1s;
+}
+
+.onCLICK-IMG:active {
+  transform: scale(0.7);
+}
+
+/*------------------------------------------------------------------change image using onclick(event)-----------------------*/
+/*------------------------------------------------------------------------------click on button to hide image--*/
+
+.click-show-pizza .toggle-show-hide {
+  display: none;
+  /* visibility: hidden; */
+}
+
+.click-show-pizza {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 960px) {
+  .pizzaToggle {
+    height: 22em;
+    width: 30em;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .pizzaToggle {
+    height: 15em;
+    width: 20em;
+  }
+}
+
+/*------------------------------------------------------------------------------click on button to hide image--*/
+
+/*---------------------------------------before and after button to switch image pizza*/
+
+.before-after-container-photo{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top:3em;
+}
+
+@media only screen and (min-width: 960px) {
+  #before-after-div-photo {
+    height: 22em;
+    width: 30em;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1.5px 1.5px gray;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #before-after-div-photo {
+    height: 15em;
+    width: 20em;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1.5px 1.5px gray;
+  }
+}
+
+/*---------------------------------------before and after button to switch image pizza*/
+
+/*click to show image ON SCREEN*/
+
+@media only screen and (max-width: 959px) {
+  .screen {
+    display: none;
+  }
+}
+
+.toggleImage {
+  display: none;
+}
+
+/*click to show image ON SCREEN*/
+
+/*click to show image ON mobile*/
+
+@media only screen and (min-width: 960px) {
+  .mobile {
+    display: none;
+  }
+}
+
+.toggleImageMobile {
+  display: none;
+}
+
+/*click to show image ON mobile*/
+
+/* accordion */
+#accordion {
+  border-left: 3px solid DarkGoldenRod;
+  border-right: 3px solid DarkGoldenRod;
+  margin-top: 3em;
+}
+
+@media only screen and (max-width: 959px) {
+  #accordion {
+    border-left: 3px solid DarkGoldenRod;
+    border-right: 3px solid DarkGoldenRod;
+    margin-top: 3em;
+    margin-left:3em;
+    margin-right:3em;
+  }
+}
+
+.accordion-img-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#accordion section a {
+  text-align: center;
+  text-decoration: overline;
+  color: DarkGoldenRod;
+}
+
+#accordion section a:hover {
+  color: #785807;
+}
+
+#accordion section a h3 {
+  margin-bottom: 1.5em;
+}
+
+#accordion section p {
+  text-align: center;
+  color: DarkGoldenRod;
+  margin-bottom: 1.5em;
+  display: none;
+}
+
+#accordion section:target p {
+  display: block;
+}
+
+#accordion section img {
+  text-align: center;
+  display: none;
+}
+
+#accordion section:target img {
+  display: block;
+}
+
+/* accordion */
+
+/*-----------------------------------------------pizza with background changing color on click*/
+.pizza-circle-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top:1.5em;
+}
+
+@media only screen and (min-width: 960px) {
+  #pizza-circle{
+    width:25em;
+    height:25em;
+    background-color: seagreen;
+    box-shadow: 1px 1px 1.5px 1.5px gray;
+    border-radius: 50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #pizza-circle-photo{
+    width:20em;
+    height:20em;
+    background-repeat: no-repeat;
+    background-image: url(../images/circle-pizza.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius:50%;
+    box-shadow: 1px 1px 1.5px 1.5px gray;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #pizza-circle{
+    margin-top:3em;
+    width:18em;
+    height:18em;
+    background-color:seagreen;
+    box-shadow: 1px 1px 1.5px 1.5px gray;
+    border-radius: 50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #pizza-circle-photo{
+    width:15em;
+    height:15em;
+    background-repeat: no-repeat;
+    background-image: url(../images/circle-pizza.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius:50%;
+    box-shadow: 1px 1px 1.5px 1.5px gray;
+  }
+}
+
+.circle-pizza-btn{
+  padding:1em;
+  margin-top:3em;
+}
+
+/*-----------------------------------------------pizza with background changing color on click*/
+
+
+/*------------------------------------------------------------------------------click on button to show image--*/
+/*footer*/
+.hidden {
+  display: none;
+}
+
+@media only screen and (min-width: 960px) {
+  #icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  #icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+footer ion-icon {
+  color: DarkGoldenRod;
+  font-size: 3rem;
+  margin: 1em 0.7em;
+  padding: 0.07em;
+  border-radius: 50%;
+  /* box-shadow: 3px 3px 2.5px 3px gray; */
+}
+
+footer ion-icon:hover {
+  color: #785807;
+  transition: 0.3s;
+}
+
+footer a h3 {
+  color: DarkGoldenRod;
+  margin-bottom: 1em;
+  text-decoration: overline;
+  text-transform: capitalize;
+}
+
+footer a h3:hover {
+  color: #785807;
+}
+
+footer h5 {
+  text-align: center;
+  margin: 1em 0;
+}
+
+footer #divSources h5 a {
+  color: DarkGoldenRod;
+  padding: 1.5em 0;
+}
+
+footer #divSources h5 a:hover {
+  color: #785807;
+}
+
+/*footer*/
+/**/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
