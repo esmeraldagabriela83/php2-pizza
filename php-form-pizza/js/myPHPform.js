@@ -17,7 +17,7 @@ const password2 = document.getElementById('password2');
 
 const comment = document.getElementById('comment');
 
-const phoneUser = document.getElementById('userPhone');
+const phoneUser = document.getElementById('user-phone');
 
 const pizzaType = document.getElementById("pizzaType");
 
@@ -58,10 +58,11 @@ function checkInputs() {
 
   function setErrorFor(input, message) {
 
-    event.preventDefault();
+    // event.preventDefault();
 
-  	const formControl = input.parentElement;
-  	const small = formControl.querySelector('small');
+  	var formControl = input.parentElement;
+  	var small = formControl.querySelector('small');
+		// console.log(input);
   	//add error class
   	formControl.className = 'form-control error';
   	//add error message inside small
@@ -70,7 +71,7 @@ function checkInputs() {
 
   function setSuccessFor(input) {
 
-  	const formControl = input.parentElement;
+  	var formControl = input.parentElement;
   	//add sucess class
   	formControl.className = 'form-control success';
   }
@@ -83,17 +84,17 @@ function checkInputs() {
 
   function setErrorForTextarea(textarea, message) {
 
-  	  event.preventDefault();
+  	  // event.preventDefault();
 
-  	const formControl = textarea.parentElement;
-  	const small = formControl.querySelector('.form-control small');
+  	var formControl = textarea.parentElement;
+  	var small = formControl.querySelector('.form-control small');
   	formControl.className = 'form-control error';
   	small.innerText = message;
   }
 
   function setSuccessForTextarea(textarea) {
 
-  	const formControl = textarea.parentElement;
+  	var formControl = textarea.parentElement;
   	formControl.className = 'form-control success';
   }
 

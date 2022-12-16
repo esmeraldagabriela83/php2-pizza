@@ -183,8 +183,13 @@ if (isset($_POST['pizza-comment'])){echo $_POST['pizza-comment'];}
 
             <label id="label-phone-number" for="user-phone">Write your phone number</label><br></br>
 
-            <input type="tel" id="user-phone" name:"phone" size="30" maxlength="10" placeholder="Phone number" value="" required />
-
+            <input type="tel" id="user-phone" name="phone" size="30" maxlength="10" placeholder="Phone number" value="<?php
+            //ca sa ramana bifat de catre user
+            if(isset($_POST['phone'])){echo $_POST['phone'] ; }
+             ?>" required />
+            <i class="fa fa-check-circle"></i>
+            <i class="fa fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
 
         <div style="margin-bottom:1em">
@@ -382,7 +387,7 @@ if( isset($_POST['cheese']) ){
 
   echo '<h3 style="text-align:center ; color:DarkGoldenRod">Afisare date formular:</h3>';
 
-  if($_POST['bifa'] && isset($_POST['submit'])){
+  if(isset($_POST['bifa']) && isset($_POST['submit'])){
 
   echo '<h3 style="text-align:center ; color:DarkGoldenRod">Username is : ' . $_POST['name'] . '.</h3>' ;
   echo '<h3 style="text-align:center ; color:DarkGoldenRod">Email address is : ' . $_POST['email'] . '.</h3>' ;
