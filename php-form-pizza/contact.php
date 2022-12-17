@@ -147,8 +147,8 @@ if(isset($_POST['email'])){echo $_POST['email'] ; }
            ?>
           " required />
 
-          <i class="fa fa-check-circle"></i>
-          <i class="fa fa-exclamation-circle"></i>
+          <i class="fa fa-check-circle" style="margin-top:-2.5em"></i>
+          <i class="fa fa-exclamation-circle" style="margin-top:-2.5em"></i>
           <small>Error message</small>
         </div>
 
@@ -187,8 +187,8 @@ if (isset($_POST['pizza-comment'])){echo $_POST['pizza-comment'];}
             //ca sa ramana bifat de catre user
             if(isset($_POST['phone'])){echo $_POST['phone'] ; }
              ?>" required />
-            <i class="fa fa-check-circle"></i>
-            <i class="fa fa-exclamation-circle"></i>
+            <i class="fa fa-check-circle" style="margin-top:1.25em"></i>
+            <i class="fa fa-exclamation-circle" style="margin-top:1em"></i>
             <small>Error message</small>
         </div>
 
@@ -340,7 +340,7 @@ if( isset($_POST['cheese']) ){
 
         <div style="padding:1.5em 0 1.5em 0">
           <a href="termsAndConditions.html" style="border:1px solid DarkGoldenRod ;
-                                                   padding:0.3em ;
+                                                   padding:0.3em 0 ;
                                                    border-radius:10px ;
                                                    box-shadow: 1px 1px 1.5px 1.5px gray;
                                                    text-align:center ;
@@ -468,157 +468,20 @@ if( isset($_POST['cheese']) ){
 
   echo '<h3 style="text-align:center ; color:green">Terms and conditions  are checked : ' . $_POST['bifa'] . '.</h3>' ;
 
-
-
   }
 
       ?>
   </div>
 
-
-
-  <div class="container">
-
-<?php
-
-
-
-$pizzaTypesWithPrice = array(
-      'CheesePizza' => 20.70 ,
-      'OlivePizza' => 30.95 ,
-      'TraditionalPizza' => 100.25 ,
-      'ModernPizza' => 50.40 ,
-      'StandardPizza' => 25.65 ,
-      'CommonPizza' => 150.80 ,
-  );
-
-?>
-
-
-
-
-
-
-        <h3 style="text-align:center ;
-                   color:DarkGoldenRod ;
-                   margin-top:1.5em ;
-                   background-color: floralwhite;
-                   padding: 1.5em 0;
-                   border-radius: 10px;
-                   box-shadow: 1px 1px 1.5px 1.5px gray;
-                   ">Order pizza by name or price </h3>
-
-
-
-
-
-        <form class="container-form" action="contact.php" method="post" style="display:flex ; align-items:center ; justify-content:center ; flex-direction:column">
-
-
-          <select name="orderPizza" style="margin:2.5em 0 ; color: DarkGoldenRod ; padding:0.5em" >
-
-                  <option value="ascend name pizza" <?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'ascend name pizza') {
-                          echo 'selected="selected"';
-                      }
-                  ?> >Ascend by name pizza</option>
-
-                  <option value="downward name pizza" <?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'downward name pizza') {
-                          echo 'selected="selected"';
-                      }
-                  ?> >Downward by name pizza</option>
-
-                  <option value="price ascend" <?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'price ascend') {
-                          echo 'selected="selected"';
-                      }
-                  ?> >Ascend by price</option>
-
-                  <option value="price downward"<?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'price downward') {
-                          echo 'selected="selected"';
-                      }
-                  ?> >Downward by price</option>
-
-              </select>
-              <br>
-              <input type="submit" value="Order" name="showOrderPizza" style="border:1px solid DarkGoldenRod ;
-                                                       padding:0.5em ;
-                                                       border-radius:10px ;
-                                                       box-shadow: 1px 1px 1.5px 1.5px gray;
-                                                       text-align:center ;
-                                                       font-size: 1rem ;
-                                                       color:DarkGoldenRod"/>
-
-        </form>
-
-
-        <div style="background-color:floralwhite ; border-radius: 10px ; box-shadow: 1px 1px 1.5px 1.5px gray ; padding:1em 0 ; margin-top: 5em">
-
-      <?php
-
-
-
-if(isset($_POST['showOrderPizza'])){
-
-
-  if ($_POST['orderPizza'] == 'ascend name pizza') {
-
-              ksort($pizzaTypesWithPrice);
-
-          } elseif ($_POST['orderPizza'] == 'downward name pizza'){
-
-              krsort($pizzaTypesWithPrice);
-
-          } elseif ($_POST['orderPizza'] == 'price ascend'){
-
-              asort($pizzaTypesWithPrice);
-
-          } elseif ($_POST['orderPizza'] == 'price downward'){
-              arsort($pizzaTypesWithPrice);
-          } else {
-              echo 'big problem';
-          }
-
-
-          echo '<ul>';
-                 foreach($pizzaTypesWithPrice as $pizzaKeyName => $pizzaValuePrice){
-                     echo '<li style=" text-align:center ; color:DarkGoldenRod"><strong>' . $pizzaKeyName . '</strong> has the price of <strong>' . $pizzaValuePrice . '</strong>.</li>' ;
-                 }
-          echo '</ul>';
-
-
-}
-
-
-       ?>
-      </div>
-
-  </div>
-
-
-
-
-  <div class="container">
-
-
-    <h3 style="text-align:center ;
-               color:DarkGoldenRod ;
-               margin-top:1.5em ;
-               background-color: floralwhite;
-               padding: 1.5em 0;
-               border-radius: 10px;
-               box-shadow: 1px 1px 1.5px 1.5px gray;
-               ">Order pizza by weekday</h3>
-
-
-    <form class="container-form" action="contact.php" method="post" style="display:flex ; align-items:center ; justify-content:center ; flex-direction:column">
-
-
-
-  </form>
-
+  <div style="padding:1.5em 0 1.5em 0 ; margin:1.5em 0 ; text-align:center">
+    <a href="moreInfo.php" style="border:1px solid DarkGoldenRod ;
+                                             padding:0.3em 0 ;
+                                             border-radius:10px ;
+                                             box-shadow: 1px 1px 1.5px 1.5px gray;
+                                             background-color:floralwhite;
+                                             color:DarkGoldenRod">
+Find out more info about our products
+    </a>
   </div>
 
 
