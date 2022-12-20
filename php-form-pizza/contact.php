@@ -364,7 +364,9 @@ if( isset($_POST['cheese']) ){
 
 
         <div class="form-control">
+
           <input type="submit" name="submit" id="submit" value="Submit">
+    
         </div>
 
 

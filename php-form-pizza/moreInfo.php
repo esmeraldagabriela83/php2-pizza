@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>more info pizza</title>
+  <title>more info pizza php</title>
 
 
 
@@ -87,25 +87,25 @@ $pizzaTypesWithPrice = array(
           <select name="orderPizza" style="margin:2.5em 0 ; color: DarkGoldenRod ; padding:0.5em" >
 
                   <option value="ascend name pizza" <?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'ascend name pizza') {
+                      if(isset($_POST['orderPizza']) && $_POST['orderPizza'] == 'ascend name pizza') {
                           echo 'selected="selected"';
                       }
                   ?> >Ascend by name pizza</option>
 
                   <option value="downward name pizza" <?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'downward name pizza') {
+                      if(isset($_POST['orderPizza']) && $_POST['orderPizza'] == 'downward name pizza') {
                           echo 'selected="selected"';
                       }
                   ?> >Downward by name pizza</option>
 
                   <option value="price ascend" <?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'price ascend') {
+                      if(isset($_POST['orderPizza']) && $_POST['orderPizza'] == 'price ascend') {
                           echo 'selected="selected"';
                       }
                   ?> >Ascend by price</option>
 
                   <option value="price downward"<?php
-                      if(isset($_GET['orderPizza']) && $_GET['orderPizza'] == 'price downward') {
+                      if(isset($_POST['orderPizza']) && $_POST['orderPizza'] == 'price downward') {
                           echo 'selected="selected"';
                       }
                   ?> >Downward by price</option>
@@ -113,6 +113,7 @@ $pizzaTypesWithPrice = array(
               </select>
               <br>
               <input type="submit" value="Order pizza" name="showOrderPizza" style="border:1px solid DarkGoldenRod ;
+                                                       cursor: pointer;
                                                        padding:0.5em ;
                                                        border-radius:10px ;
                                                        box-shadow: 1px 1px 1.5px 1.5px gray;
@@ -173,6 +174,8 @@ if(isset($_POST['showOrderPizza'])){
 
 
 
+
+
 <section class="container" style="text-align:center ;
                                   color:DarkGoldenRod ;
                                   margin-top:3em ; background-color: floralwhite;
@@ -209,12 +212,13 @@ if(isset($_POST['showOrderPizza'])){
           </select>
 
  <input type="submit" name="showPizzaDay"   value="Show day"   style="border:1px solid DarkGoldenRod ;
-                                          padding:0.5em ;
-                                          border-radius:10px ;
-                                          box-shadow: 1px 1px 1.5px 1.5px gray;
-                                          text-align:center ;
-                                          font-size: 1rem ;
-                                          color:DarkGoldenRod" />
+                                                                      cursor: pointer;
+                                                                      padding:0.5em ;
+                                                                      border-radius:10px ;
+                                                                      box-shadow: 1px 1px 1.5px 1.5px gray;
+                                                                      text-align:center ;
+                                                                      font-size: 1rem ;
+                                                                      color:DarkGoldenRod" />
 
       </form>
 
@@ -268,6 +272,7 @@ if (isset($_POST['showPizzaDay'])){
           ?>
       </select>
       <input type="submit" name="showIngredient" value="Show ingredient" style="border:1px solid DarkGoldenRod ;
+                                               cursor: pointer;
                                                padding:0.5em ;
                                                border-radius:10px ;
                                                box-shadow: 1px 1px 1.5px 1.5px gray;
@@ -319,19 +324,27 @@ if (isset($_POST['showIngredient'])){
 
 
                                   <form enctype="multipart/form-data" method="post">
-                                      <input type="file" name="fisier"  style="	border: 2.5px solid DarkGoldenRod;
-                                                                              	border-radius: 5px;
-                                                                                font-size: 14px;
-                                      	                                        padding: 10px;
-                                      	                                        width: 100%;" /><br/>
-                                      <input type="submit" name="upload" value="send" style="border:1px solid DarkGoldenRod ;
-                                                                                margin-top:1.5em;
-                                                                               padding:0.5em ;
-                                                                               border-radius:10px ;
-                                                                               box-shadow: 1px 1px 1.5px 1.5px gray;
-                                                                               text-align:center ;
-                                                                               font-size: 1rem ;
-                                                                               color:DarkGoldenRod"/>
+                                      <input type="file" name="fisier" id="fi" style="border: 2.5px solid DarkGoldenRod;
+                                                                              	     border-radius: 5px;
+                                                                                     font-size: 14px;
+                                      	                                             padding: 10px;
+                                      	                                             width: 100%;
+                                                                                     display:none" /><br/>
+
+                                                                                <label for="fi">
+                                                                                           <img src="images/upload2.png" style="height:2.5em"/><br>
+                                                                                           Add the file
+                                                                                       </label><br>
+
+                                      <input type="submit" name="upload" value="Send" style="border:1px solid DarkGoldenRod ;
+                                                                                             cursor: pointer;
+                                                                                             margin-top:1.5em;
+                                                                                             padding:0.5em ;
+                                                                                             border-radius:10px ;
+                                                                                             box-shadow: 1px 1px 1.5px 1.5px gray;
+                                                                                             text-align:center ;
+                                                                                             font-size: 1rem ;
+                                                                                             color:DarkGoldenRod"/>
                                   </form>
 
 <div   style="margin: 1.5em 0">
@@ -356,8 +369,7 @@ $nume_nou = 'uploads/' . microtime() . " - " . $fisierul['name'];
                                           }  elseif ($fisierul['type'] == 'application/pdf'){
                                               echo '<a href="' . $nume_nou . '" target="_blank">view the pdf</a>';
                                           } elseif ($fisierul['type'] == 'video/mp4'){
-                                              echo '<video controls> <source type="video/mp4"
-                                              src="' .$nume_nou . '"/></video>';
+                                              echo '<video controls> <source type="video/mp4" src="' .$nume_nou . '"/></video>';
                                           } else {
                                               echo '<a href="' .$nume_nou . '" download>download the file</a>';
                                           }
@@ -370,7 +382,111 @@ $nume_nou = 'uploads/' . microtime() . " - " . $fisierul['name'];
 </section>
 
 
+<section class="container" style="text-align:center ;
+                                  color:DarkGoldenRod ;
+                                  margin-top:3em ;
+                                  margin-bottom:3em ;
+                                  background-color: floralwhite;
+                                  padding: 1.5em;
+                                  border-radius: 10px;
+                                  box-shadow: 1px 1px 1.5px 1.5px gray">
 
+<?php
+
+
+
+$produsePizza=array(
+
+'CheesePizza' => array(
+  'health' => 'Delicious  product' ,
+  'timpDeLucru' => '3 hours' ,
+  'imgPizza' => 'images/data-src-pizza1.jpg' ,
+  'ingrediente' => array('cheese' , 'olive' , 'salt' , 'flour')
+) ,
+'OlivePizza' => array(
+  'health' => 'Healthy product' ,
+  'timpDeLucru' => '5 hours' ,
+  'imgPizza' => 'images/data-src-pizza2.jpg' ,
+  'ingrediente' => array('olive' , 'salami' , 'tomatoes' , 'savory' , 'pepper')
+) ,
+'TraditionalPizza' => array(
+  'health' => 'Healthy product' ,
+  'timpDeLucru' => '1.5 hours' ,
+  'imgPizza' => 'images/data-src-pizza3.jpg' ,
+  'ingrediente' => array('basil' , 'olive' , 'onion' , 'Parmesan' , 'pepper')
+) ,
+'ModernPizza' => array(
+  'health' => 'Delicious  product' ,
+  'timpDeLucru' => '3.5 hours' ,
+  'imgPizza' => 'images/data-src-pizza4.jpg' ,
+  'ingrediente' => array('pepper' , 'savory' , 'salt' , 'cheese' , 'tomatoes')
+) ,
+'StandardPizza' => array(
+  'health' => 'Healthy product' ,
+  'timpDeLucru' => '2.7 hours' ,
+  'imgPizza' => 'images/data-src-pizza5.jpg' ,
+  'ingrediente' => array('spices' , 'basil' , 'salt' , 'cheese' , 'flour')
+) ,
+'CommonPizza' => array(
+  'health' => 'Delicious  product' ,
+  'timpDeLucru' => '2 hours' ,
+  'imgPizza' => 'images/data-src-pizza6.jpg' ,
+  'ingrediente' => array('onion' , 'cheese' , 'olive' , 'tomatoes')
+)
+
+) ;
+
+ ?>
+
+<form action="moreInfo.php" method="post">
+
+<input type="submit" name="productPresentation" value="Product presentation" style="border:1px solid DarkGoldenRod ;
+                                                                                    cursor: pointer;
+                                                                                    margin-top:1.5em;
+                                                                                    margin-bottom:1.5em;
+                                                                                    padding:0.5em ;
+                                                                                    border-radius:10px ;
+                                                                                    box-shadow: 1px 1px 1.5px 1.5px gray;
+                                                                                    text-align:center ;
+                                                                                    font-size: 1rem ;
+                                                                                    color:DarkGoldenRod"/>
+
+</form>
+
+
+<?php
+
+if(isset($_POST['productPresentation'])){
+  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Pizza products are :</h3>' ;
+
+foreach($produsePizza as $prosusPizzaKey => $prosusPizzaValue){
+
+echo '<article>';
+
+        echo '<h3 style="text-align:center ; color:DarkGoldenRod ; margin:1em 0">Product name is: ' . $prosusPizzaKey . '</h3>' ;
+
+        echo '<img src="' . $prosusPizzaValue['imgPizza'] . '" alt="pizzaImgProduct" style="height: 11em ; border-radius: 10px ; box-shadow: 1px 1px 1.5px 1.5px gray" />' ;
+
+        echo '<p style="text-align:center ; color:DarkGoldenRod ; margin:0.5em 0">Work time is about: ' . $prosusPizzaValue['timpDeLucru'] . '.</p>' ;
+
+        echo '<p style="text-align:center ; color:DarkGoldenRod ; margin:0.5em 0">Ingredients are : ' . implode(" , " , $prosusPizzaValue['ingrediente']) .  '.</p>' ;
+
+        if($prosusPizzaValue['health'] === 'Healthy product'){
+          echo '<p style="text-align:center ; color:DarkGoldenRod ; margin:0.5em 0">Recommendation: <strong style="color:green">' . $prosusPizzaValue['health'] . ' </strong></p>' ;
+        }else{
+          echo '<p style="text-align:center ; color:DarkGoldenRod ; margin:0.5em 0">Recommendation: <strong style="color:red">' . $prosusPizzaValue['health'] . ' </strong></p>' ;
+        }
+
+echo '</article>' ;
+
+}
+
+}
+
+?>
+</article>
+
+</section>
 
 
   <!-------------------------------------------------------------------------------------------------------------->
