@@ -235,7 +235,7 @@
 
 </body>
 <script src="js/nav.js" type="text/javascript"></script>
-<script src="js/food.js" type="text/javascript"></script>
+<script src="js/foodTutorial.js" type="text/javascript"></script>
 
 <script src="js/footer-show-hide.js" type="text/javascript"></script>
 </html>

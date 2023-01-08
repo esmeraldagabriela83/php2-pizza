@@ -332,9 +332,12 @@ if (isset($_POST['showIngredient'])){
                                                                                      display:none" /><br/>
 
                                                                                 <label for="fi">
-                                                                                           <img src="images/upload2.png" style="height:2.5em"/><br>
-                                                                                           Add the file
-                                                                                       </label><br>
+                                                                                           <img src="images/upload2.png" style="height:2.5em ;
+                                                                                                                                margin:0.5em ;
+                                                                                                                                border-radius: 10px;
+                                                                                                                                box-shadow: 1px 1px 1.5px 1.5px gray;"/><br>
+                                                                                Add the file
+                                                                                </label><br>
 
                                       <input type="submit" name="upload" value="Send" style="border:1px solid DarkGoldenRod ;
                                                                                              cursor: pointer;
@@ -351,6 +354,8 @@ if (isset($_POST['showIngredient'])){
                                   <?php
                                       if (isset($_POST['upload'])){
                                           $fisierul = $_FILES['fisier'];
+                                              // print_r($fisierul);
+                                              // echo '<br>' ;
 //name este cheie predefinita
 
 $nume_nou = 'uploads/' . microtime() . " - " . $fisierul['name'];
@@ -485,6 +490,256 @@ echo '</article>' ;
 
 ?>
 </article>
+
+</section>
+
+
+
+<section class="container" style="text-align:center ;
+                                  color:DarkGoldenRod ;
+                                  margin-top:3em ;
+                                  margin-bottom:3em ;
+                                  background-color: floralwhite;
+                                  padding: 1.5em;
+                                  border-radius: 10px;
+                                  box-shadow: 1px 1px 1.5px 1.5px gray">
+
+<?php
+
+  $pizzaTypesArr3 = array('CheesePizza', 'OlivePizza', 'TraditionalPizza','ModernPizza','StandardPizza','CommonPizza');
+
+  $produsePizza3=array(
+
+  'CheesePizza' => array(
+    'health' => 'Delicious  product' ,
+    'timpDeLucru' => '3 hours' ,
+    'imgPizza' => 'images/data-src-pizza1.jpg' ,
+    'ingrediente' => array('cheese' , 'olive' , 'salt' , 'flour')
+  ) ,
+  'OlivePizza' => array(
+    'health' => 'Healthy product' ,
+    'timpDeLucru' => '5 hours' ,
+    'imgPizza' => 'images/data-src-pizza2.jpg' ,
+    'ingrediente' => array('olive' , 'salami' , 'tomatoes' , 'savory' , 'pepper')
+  ) ,
+  'TraditionalPizza' => array(
+    'health' => 'Healthy product' ,
+    'timpDeLucru' => '1.5 hours' ,
+    'imgPizza' => 'images/data-src-pizza3.jpg' ,
+    'ingrediente' => array('basil' , 'olive' , 'onion' , 'Parmesan' , 'pepper')
+  ) ,
+  'ModernPizza' => array(
+    'health' => 'Delicious  product' ,
+    'timpDeLucru' => '3.5 hours' ,
+    'imgPizza' => 'images/data-src-pizza4.jpg' ,
+    'ingrediente' => array('pepper' , 'savory' , 'salt' , 'cheese' , 'tomatoes')
+  ) ,
+  'StandardPizza' => array(
+    'health' => 'Healthy product' ,
+    'timpDeLucru' => '2.7 hours' ,
+    'imgPizza' => 'images/data-src-pizza5.jpg' ,
+    'ingrediente' => array('spices' , 'basil' , 'salt' , 'cheese' , 'flour')
+  ) ,
+  'CommonPizza' => array(
+    'health' => 'Delicious  product' ,
+    'timpDeLucru' => '2 hours' ,
+    'imgPizza' => 'images/data-src-pizza6.jpg' ,
+    'ingrediente' => array('onion' , 'cheese' , 'olive' , 'tomatoes')
+  )
+
+  ) ;
+
+?>
+
+
+
+
+<form class="container-form" action="moreInfo.php" method="post" style="display:flex ; align-items:center ; justify-content:center ; flex-direction:column">
+
+
+<select name="choosePizza" style="margin:2.5em 0 ; color: DarkGoldenRod ; padding:0.5em">
+<?php
+echo '<option>' . implode('</option><option>', $pizzaTypesArr3) . '</option>';
+?>
+</select>
+<input type="submit" name="showChosenPizza" value= "Show the chosen pizza" id="showChosenPizza"/>
+</form>
+
+<?php
+
+if(isset($_POST['showChosenPizza'])){
+
+  echo '<h3 style="text-align:center ; color:DarkGoldenRod ; margin-top:1.5em">Your choice is: ' . $_POST['choosePizza'] .  '.</h3>' ;
+
+//print_r($produsePizza3) ;
+
+//print_r($_POST['choosePizza']) ;
+
+$x=$_POST['choosePizza'] ;
+
+//print_r( $produsePizza3[$x] );
+
+
+  if( $_POST['choosePizza'] === 'CheesePizza' || $_POST['choosePizza'] === 'OlivePizza'
+   || $_POST['choosePizza'] === 'TraditionalPizza' || $_POST['choosePizza'] === 'ModernPizza'
+   || $_POST['choosePizza'] === 'StandardPizza' || $_POST['choosePizza'] === 'CommonPizza' ){
+
+
+if($produsePizza3[$x]['health']==="Healthy product"){
+    echo '<p style="text-align:center ; color:green"><strong>' . $produsePizza3[$x]['health'] . '</strong></p>' ;
+}else{
+    echo '<p style="text-align:center ; color:red"><strong>' . $produsePizza3[$x]['health'] . '</strong></p>' ;
+}
+
+    echo '<p style="text-align:center ; color:DarkGoldenRod">Work time is about: ' . $produsePizza3[$x]['timpDeLucru'] . '</p>' ;
+    echo '<p style="text-align:center ; color:DarkGoldenRod">Ingredients are : '  . implode(" , " , $produsePizza3[$x]['ingrediente']) . ' .</p>' ;
+  echo '<img src="' . $produsePizza3[$x]['imgPizza'] . '" alt="productImgChose" style="height: 11em ;margin-top:1em ; border-radius: 10px ; box-shadow: 1px 1px 1.5px 1.5px gray"/>' ;
+
+  }else{
+    echo '<h3 style="text-align:center ; color:red">The product is not in our list !</h3>' ;
+  }
+
+}
+
+ ?>
+
+</section>
+
+
+
+<section class="container" style="text-align:center ;
+                                  color:DarkGoldenRod ;
+                                  margin-top:3em ;
+                                  margin-bottom:3em ;
+                                  background-color: floralwhite;
+                                  padding: 1.5em;
+                                  border-radius: 10px;
+                                  box-shadow: 1px 1px 1.5px 1.5px gray">
+
+<?php
+$pizzaTypesArr4 = array('CheesePizza', 'OlivePizza', 'TraditionalPizza','ModernPizza','StandardPizza','CommonPizza');
+
+echo '<p style="text-align:center ; color:DarkGoldenRod">' . implode("," , $pizzaTypesArr4) . '</p>' ;
+
+$produsePizza4=array(
+
+'CheesePizza' => array(
+  'health' => 'Delicious  product' ,
+  'timpDeLucru' => '3 hours' ,
+  'imgPizza' => 'images/data-src-pizza1.jpg' ,
+  'ingrediente' => array('cheese' , 'olive' , 'salt' , 'flour')
+) ,
+'OlivePizza' => array(
+  'health' => 'Healthy product' ,
+  'timpDeLucru' => '5 hours' ,
+  'imgPizza' => 'images/data-src-pizza2.jpg' ,
+  'ingrediente' => array('olive' , 'salami' , 'tomatoes' , 'savory' , 'pepper')
+) ,
+'TraditionalPizza' => array(
+  'health' => 'Healthy product' ,
+  'timpDeLucru' => '1.5 hours' ,
+  'imgPizza' => 'images/data-src-pizza3.jpg' ,
+  'ingrediente' => array('basil' , 'olive' , 'onion' , 'Parmesan' , 'pepper')
+) ,
+'ModernPizza' => array(
+  'health' => 'Delicious  product' ,
+  'timpDeLucru' => '3.5 hours' ,
+  'imgPizza' => 'images/data-src-pizza4.jpg' ,
+  'ingrediente' => array('pepper' , 'savory' , 'salt' , 'cheese' , 'tomatoes')
+) ,
+'StandardPizza' => array(
+  'health' => 'Healthy product' ,
+  'timpDeLucru' => '2.7 hours' ,
+  'imgPizza' => 'images/data-src-pizza5.jpg' ,
+  'ingrediente' => array('spices' , 'basil' , 'salt' , 'cheese' , 'flour')
+) ,
+'CommonPizza' => array(
+  'health' => 'Delicious  product' ,
+  'timpDeLucru' => '2 hours' ,
+  'imgPizza' => 'images/data-src-pizza6.jpg' ,
+  'ingrediente' => array('onion' , 'cheese' , 'olive' , 'tomatoes')
+)
+
+) ;
+
+
+ ?>
+
+
+<form class="container-form" action="moreInfo.php" method="post" style="display:flex ; align-items:center ; justify-content:center ; flex-direction:column">
+
+
+
+      <label for="userPizzaChoice">Choose one of the pizza products from above</label>
+      <input type="text" name="userPizzaChoice" id="userPizzaChoice"
+                                                value="<?php
+                                  if(isset($_POST['userPizzaChoice'])){echo $_POST['userPizzaChoice'] ;}
+                                  ?>"
+                                                style="margin-top:1.5em ;
+                                                       padding:0.5em;
+                                                       width:90%;
+                                                       border-radius:5px;
+                                                       border:1px solid DarkGoldenRod"/>
+
+
+      <input type="submit" name="displayPizzaChoosen" value= "Show the chosen pizza" style="border:1px solid DarkGoldenRod ;
+                                                                                            cursor: pointer;
+                                                                                            margin-top:1.5em;
+                                                                                            margin-bottom:1.5em;
+                                                                                            padding:0.5em ;
+                                                                                            border-radius:10px ;
+                                                                                            box-shadow: 1px 1px 1.5px 1.5px gray;
+                                                                                            text-align:center ;
+                                                                                            font-size: 1rem ;
+                                                                                            color:DarkGoldenRod;"
+        />
+
+</form>
+
+<?php
+
+if(isset($_POST['displayPizzaChoosen'])){
+  // print_r($produsePizza4) ;
+  // echo "<h1>with key</h1>" ;
+  // print_r($produsePizza4['CommonPizza']) ;
+  //   echo "<h1>key health</h1>" ;
+  // print_r($produsePizza4['CommonPizza']['health']) ;
+  //   echo "<br></br>" ;
+  //
+  // print_r($_POST['userPizzaChoice']) ;
+  //   echo "<br></br>" ;
+  //
+  // print_r($produsePizza4[$_POST['userPizzaChoice']]) ;
+  //     echo "<br></br>" ;
+  // print_r($produsePizza4[$_POST['userPizzaChoice']]['health']) ;
+
+  if($_POST['userPizzaChoice'] === 'CheesePizza' || $_POST['userPizzaChoice'] === 'OlivePizza'
+    || $_POST['userPizzaChoice'] === 'TraditionalPizza' || $_POST['userPizzaChoice'] === 'ModernPizza'
+    || $_POST['userPizzaChoice'] === 'StandardPizza' || $_POST['userPizzaChoice'] === 'CommonPizza'){
+
+  echo '<h3 style="text-align:center ; color:DarkGoldenRod ; margin-top:1.5em">Your choice is: ' . $_POST['userPizzaChoice'] . '</h3>' ;
+
+  if($produsePizza4[$_POST['userPizzaChoice']]['health']==="Healthy product"){
+      echo '<p style="text-align:center ; color:green"><strong>' . $produsePizza4[$_POST['userPizzaChoice']]['health'] . '</strong></p>' ;
+  }else{
+      echo '<p style="text-align:center ; color:red"><strong>' . $produsePizza4[$_POST['userPizzaChoice']]['health'] . '</strong></p>' ;
+  }
+
+
+  echo '<p style="text-align:center ; color:DarkGoldenRod">Work time is about: ' . $produsePizza4[$_POST['userPizzaChoice']]['timpDeLucru'] . '</p>' ;
+  echo '<p style="text-align:center ; color:DarkGoldenRod">Ingredients are : '  . implode(" , " , $produsePizza4[$_POST['userPizzaChoice']]['ingrediente']) . ' .</p>' ;
+  echo '<img src="' . $produsePizza4[$_POST['userPizzaChoice']]['imgPizza'] . '" alt="productImgChose" style="height: 11em ;margin-top:1em ; border-radius: 10px ; box-shadow: 1px 1px 1.5px 1.5px gray"/>' ;
+
+
+  }else{
+    echo '<h3 style="text-align:center ; color:red ; margin-top:1em">The product is not in our list !</h3>' ;
+  }
+
+}
+
+
+ ?>
+
 
 </section>
 

@@ -82,7 +82,7 @@ body { margin: 0; padding: 0; }
         <h2>Create Account</h2>
       </div>
 
-      <form id="form" class="form" action="contact.php" method="POST">
+      <form id="form" class="form" action="contact.php" method="POST" enctype="multipart/form-data">
 
         <div class="form-control">
           <label for="username">Username</label>
@@ -338,6 +338,28 @@ if( isset($_POST['cheese']) ){
 
 
 
+
+        <input type="file" name="fisier" id="fi" style="border: 2.5px solid DarkGoldenRod;
+                                                                         border-radius: 5px;
+                                                                         font-size: 14px;
+                                                                         padding: 10px;
+                                                                         width: 100%;
+                                                                         display:none" /><br/>
+
+        <label for="fi">
+        <img src="images/upload2.png" style="height:2.5em ;
+                                             margin:0.5em ;
+                                             border-radius: 10px;
+                                             box-shadow: 1px 1px 1.5px 1.5px gray;"/><br>
+        Add your pizza image or a file
+        </label><br>
+
+
+
+
+
+
+
         <div style="padding:1.5em 0 1.5em 0">
           <a href="termsAndConditions.html" style="border:1px solid DarkGoldenRod ;
                                                    padding:0.3em 0 ;
@@ -363,10 +385,13 @@ if( isset($_POST['cheese']) ){
 
 
 
+
+
+
         <div class="form-control">
 
           <input type="submit" name="submit" id="submit" value="Submit">
-    
+
         </div>
 
 
@@ -387,93 +412,336 @@ if( isset($_POST['cheese']) ){
     <?php
 
 
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Afisare date formular:</h3>';
-
-  if(isset($_POST['bifa']) && isset($_POST['submit'])){
-
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Username is : ' . $_POST['name'] . '.</h3>' ;
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Email address is : ' . $_POST['email'] . '.</h3>' ;
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Your birthday is on  : ' . $_POST['dateBirthday'] . '.</h3>' ;
+//accesam baza de date
+$c_db = mysqli_connect('localhost', 'tfaudmsg_user', '*$k@,oU.82G5', 'tfaudmsg_pizza');
 
 
-  if($_POST['password'] === $_POST['password2']){
-  echo '<h3 style="text-align:center ; color:green">Password is : ' . $_POST['password'] . '.</h3>' ;
-  }else{
-  echo '<h3 style="text-align:center ; color:red">Passwords do not match.</h3>' ;
-  }
+// verificare conexiune
+    if(mysqli_connect_errno()){
+        echo 'NU s-a conectat la baza de date';
+        exit;
+    } else {
+        echo 'conexiune cu succes';
+          // INSERAM datele din formular
 
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">User comment is : ' . $_POST['pizza-comment'] . '.</h3>' ;
+          echo '<h3 style="text-align:center ; color:DarkGoldenRod">Afisare date formular:</h3>';
 
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Phone number is : ' . $_POST['phone'] . '.</h3>' ;
+          if(isset($_POST['bifa']) && isset($_POST['submit'])){
+        
+        
+            if($_POST['password'] === $_POST['password2']){
+        
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Username is : ' . $_POST['name'] . '.</h3>' ;
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Email address is : ' . $_POST['email'] . '.</h3>' ;
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Your birthday is on  : ' . $_POST['dateBirthday'] . '.</h3>' ;
+        
+              echo '<h3 style="text-align:center ; color:green">Password is : ' . $_POST['password'] . '.</h3>' ;
+        
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">User comment is : ' . $_POST['pizza-comment'] . '.</h3>' ;
+        
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Phone number is : ' . $_POST['phone'] . '.</h3>' ;
+        
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Size of pizza  is : ' . $_POST['size'] . '.</h3>' ;
+        
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Type of pizza  is : ' . $_POST['type'] . '.</h3>' ;
+        
+              echo '<h3 style="text-align:center ; color:DarkGoldenRod">Time of delivery  is : ' . $_POST['deliveryTime'] . '.</h3>' ;
+        
+        
+        
+              if ( isset($_POST['salt'])){
+                  //folosesc if  ca sa verific daca bifa de salt a fost selectata
+                  //ca sa-mi afiseze pasiunea 'salt' in loc de 'on'
+                  // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['salt'] . '.</h1>' ;
+                  echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : salt .</h3>' ;
+              }else{
+                  echo '<h3 style="text-align:center ; color:red">Salt is not a  chosen ingredient.</h3>' ;
+              }
+        
+        
+        
+              if ( isset($_POST['pepper'])){
+                  //folosesc if  ca sa verific daca bifa de pepper a fost selectata
+                  //ca sa-mi afiseze pasiunea 'pepper' in loc de 'on'
+                  // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['pepper'] . '.</h1>' ;
+                  echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : pepper .</h3>' ;
+              }else{
+                  echo '<h3 style="text-align:center ; color:red">Pepper is not a  chosen ingredient.</h3>' ;
+              }
+        
+        
+        
+              if ( isset($_POST['olive'])){
+                  //folosesc if  ca sa verific daca bifa de olive a fost selectata
+                  //ca sa-mi afiseze pasiunea 'olive' in loc de 'on'
+                  // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['olive'] . '.</h1>' ;
+                  echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : olive .</h3>' ;
+              }else{
+                  echo '<h3 style="text-align:center ; color:red">Olive is not a  chosen ingredient.</h3>' ;
+              }
+        
+        
+              if ( isset($_POST['mushrooms'])){
+                  //folosesc if  ca sa verific daca bifa de mushrooms a fost selectata
+                  //ca sa-mi afiseze pasiunea 'mushrooms' in loc de 'on'
+                  // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['mushrooms'] . '.</h1>' ;
+                  echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : mushrooms .</h3>' ;
+              }else{
+                  echo '<h3 style="text-align:center ; color:red">Mushrooms is not a  chosen ingredient.</h3>' ;
+              }
+        
+        
+              if ( isset($_POST['cheese'])){
+                  //folosesc if  ca sa verific daca bifa de cheese a fost selectata
+                  //ca sa-mi afiseze pasiunea 'cheese' in loc de 'on'
+                  // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['cheese'] . '.</h1>' ;
+                  echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : cheese .</h3>' ;
+              }else{
+                  echo '<h3 style="text-align:center ; color:red">Cheese is not a  chosen ingredient.</h3>' ;
+              }
+        
+        
+        
+        
+        
+        
+        
+        
+              $fisierul = $_FILES['fisier'];
+                  // print_r($fisierul);
+                  // echo '<br>' ;
+        //name este cheie predefinita
+        
+        $nume_nou = 'uploads/' . microtime() . " - " . $fisierul['name'];
+        
+              // incarcam fisierul din formular (temporar in browser)
+              // in locatia aleasa de catre noi (uploads/nume...) folder-ul uploads fiind creat manual
+              move_uploaded_file( $fisierul['tmp_name'], $nume_nou );
+              // echo 'calea fisierului:  uploads/' . $fisierul['name'];
+        
+              // echo '<p style="text-align:center ; padding:1em">' . $fisierul['type'] . '</p>';
+        
+              if ($fisierul['type'] == 'image/jpeg' ||
+                  $fisierul['type'] == 'image/jpg' ||
+                  $fisierul['type'] == 'image/png'||
+                  $fisierul['type'] == 'image/gif' ||
+                  $fisierul['type'] == 'image/svg + xml'   ){
+                    echo '<div style="display:flex ; align-items:center ; justify-content:center ; padding:1em">' ;
+                      echo '<img src="' .$nume_nou . '" alt="my-photo2" style="height: 11em ; border-radius: 10px ; box-shadow: 1px 1px 1.5px 1.5px gray" />' ;
+                    echo '</div>' ;
+              }  else{
+                  echo '<a href="' . $nume_nou . '" target="_blank">view FILE</a>';
+              }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+              echo '<h3 style="text-align:center ; color:green">Terms and conditions  are checked : ' . $_POST['bifa'] . '.</h3>' ;
+        
+        
+              
+           $headers = 'From: contact@mihaelagabriela.ro' . "\r\n" .
+           'Reply-To: '. $_POST['email'] . "\r\n" .
+           'X-Mailer: PHP/' . phpversion();
+        
+           $salt= '0';
+           if(isset($_POST['salt'])){
+            $salt= '1';
+           } 
+        
+           $pepper= '0';
+           if(isset($_POST['pepper'])){
+            $pepper= '1';
+           }
+        
+           $olive= '0';
+           if(isset($_POST['olive'])){
+            $olive= '1';
+           }
+        
+           $mushrooms= '0';
+           if(isset($_POST['mushrooms'])){
+            $mushrooms= '1';
+           }
+        
+           $cheese= '0';
+           if(isset($_POST['cheese'])){
+            $cheese= '1';
+           }
+        
+        
+              mail('esmeraldagabriela83@yahoo.com' ,
+                'Mail de pe php2-pizza site contact.php' ,
+                'Name is: ' . $_POST['name'] .
+                ' User with email:  ' . $_POST['email'] .
+                ' User with dateBirthday:  ' . $_POST['dateBirthday'] .
+                ' User with password:  ' . $_POST['password'] .
+                ' User with pizza-comment:  ' . $_POST['pizza-comment'] .
+                ' User with phone:  ' . $_POST['phone'] .
+                ' User with size:  ' . $_POST['size'] .
+                ' User with type:  ' . $_POST['type'] .
+                ' User with deliveryTime:  ' . $_POST['deliveryTime'] .
+                ' salt:  ' . $salt .
+                ' pepper:  ' . $pepper .
+                ' olive:  ' . $olive .
+                ' mushrooms:  ' . $mushrooms .
+                ' cheese:  ' . $cheese .
+                ' bifa:  ' . $_POST['bifa']);
 
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Size of pizza  is : ' . $_POST['size'] . '.</h3>' ;
-
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Type of pizza  is : ' . $_POST['type'] . '.</h3>' ;
-
-  echo '<h3 style="text-align:center ; color:DarkGoldenRod">Time of delivery  is : ' . $_POST['deliveryTime'] . '.</h3>' ;
 
 
+//curs9
 
-  if ( isset($_POST['salt'])){
-      //folosesc if  ca sa verific daca bifa de salt a fost selectata
-      //ca sa-mi afiseze pasiunea 'salt' in loc de 'on'
-      // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['salt'] . '.</h1>' ;
-      echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : salt .</h3>' ;
-  }else{
-      echo '<h3 style="text-align:center ; color:red">Salt is not a  chosen ingredient.</h3>' ;
-  }
+// INSERAM in tabel
 
 
+$username = $_POST['name'];
+$email = $_POST['email'];
+$dateBirthday = $_POST['dateBirthday'];
+$email = $_POST['email'];
 
-  if ( isset($_POST['pepper'])){
-      //folosesc if  ca sa verific daca bifa de pepper a fost selectata
-      //ca sa-mi afiseze pasiunea 'pepper' in loc de 'on'
-      // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['pepper'] . '.</h1>' ;
-      echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : pepper .</h3>' ;
-  }else{
-      echo '<h3 style="text-align:center ; color:red">Pepper is not a  chosen ingredient.</h3>' ;
-  }
+$password = $_POST['password'];
+$check_password = $_POST['password2'];
+
+$comment = $_POST['pizza-comment'];
+$tel = $_POST['phone'];
+$size = $_POST['size'];
+
+$type = $_POST['type'];
+$delivery = $_POST['deliveryTime'];
 
 
 
-  if ( isset($_POST['olive'])){
-      //folosesc if  ca sa verific daca bifa de olive a fost selectata
-      //ca sa-mi afiseze pasiunea 'olive' in loc de 'on'
-      // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['olive'] . '.</h1>' ;
-      echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : olive .</h3>' ;
-  }else{
-      echo '<h3 style="text-align:center ; color:red">Olive is not a  chosen ingredient.</h3>' ;
-  }
+$image = $nume_nou;
 
+//register cu insert
+// pasul 4.2 - inseram variabilele cu informatii din formular in baza de date
+mysqli_query($c_db, 
+  "INSERT INTO pizza_table (username, email, day , password , check_password , comment , tel , size , type , delivery , salt , pepper , olive , mushrooms , cheese , image )
+   VALUES ('$username' , '$email' , '$dateBirthday', '$password' , '$check_password' , '$comment' , '$tel' , '$size' , '$type' , '$delivery' , '$salt' , '$pepper' , '$olive' , '$mushrooms'  , '$cheese' ,  '$image')");
 
-  if ( isset($_POST['mushrooms'])){
-      //folosesc if  ca sa verific daca bifa de mushrooms a fost selectata
-      //ca sa-mi afiseze pasiunea 'mushrooms' in loc de 'on'
-      // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['mushrooms'] . '.</h1>' ;
-      echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : mushrooms .</h3>' ;
-  }else{
-      echo '<h3 style="text-align:center ; color:red">Mushrooms is not a  chosen ingredient.</h3>' ;
-  }
+// end INSERARE in tabel
 
+//curs9
 
-  if ( isset($_POST['cheese'])){
-      //folosesc if  ca sa verific daca bifa de cheese a fost selectata
-      //ca sa-mi afiseze pasiunea 'cheese' in loc de 'on'
-      // echo '<h1 style="text-align:center ; color:DarkGoldenRod">The chosen ingredient is :' . $_POST['cheese'] . '.</h1>' ;
-      echo '<h3 style="text-align:center ; color:green">The chosen ingredient is : cheese .</h3>' ;
-  }else{
-      echo '<h3 style="text-align:center ; color:red">Cheese is not a  chosen ingredient.</h3>' ;
-  }
+            }else{
+            echo '<h3 style="text-align:center ; color:red">Passwords do not match.</h3>' ;
+            }
+         
+        
+          }
 
 
 
 
-  echo '<h3 style="text-align:center ; color:green">Terms and conditions  are checked : ' . $_POST['bifa'] . '.</h3>' ;
+ // AFISAM din tabel datele introduse de user
 
-  }
+
+
+ // AFISAM din tabel datele introduse de user
+
+
+
+
+
+
+    }
+
+
+
+ 
 
       ?>
   </div>
+
+
+
+
+  <div style="padding:1.5em 0 1.5em 0 ; margin:1.5em 0 ; text-align:center">
+
+
+<?php
+
+//log in cu select
+ // AFISAM din tabel datele introduse de user
+ $selectie_db = mysqli_query($c_db, "SELECT * FROM pizza_table");
+        
+ echo '<ol class="container" style="border:1px solid green ; padding:1em 0 ; border-radius:10px ; background-color:floralwhite ; box-shadow:1px 1.5px 1.5px gray">';
+
+ echo '<li> ID </li>';
+ echo '<li>Username</li>';
+ echo '<li>Email</li>';
+ echo '<li>Birthday</li>';
+ echo '<li>Password</li>';
+ echo '<li>Check_password</li>';
+ echo '<li>Comment</li>';
+ echo '<li>Tel</li>';
+ echo '<li>Size</li>';
+ echo '<li>Type</li>';
+ echo '<li>Delivery</li>';
+ echo '<li>Salt</li>';
+ echo '<li>Pepper</li>';
+ echo '<li>Olive</li>';
+ echo '<li>Mushrooms</li>';
+ echo '<li>Cheese</li>';
+ echo '<li>Image</li>';
+ echo '<li></li>';
+
+
+ echo '</ol>';
+
+
+ while($rez =  mysqli_fetch_assoc($selectie_db)){
+     echo '<ol class="container" style="border:1px solid green ; padding:1em 0 ; border-radius:10px ; background-color:floralwhite ; box-shadow:1px 1.5px 1.5px gray">';
+     echo '<li>id: '.  $rez['id'] . '</li>';
+     echo '<li>username: '.  $rez['username'] . '</li>';
+     echo '<li>email: '.  $rez['email'] . '</li>';
+     echo '<li>birthday: ' . $rez['day'] . '</li>';
+     echo '<li>password: '.  $rez['password'] . '</li>';
+     echo '<li>check password: '.  $rez['check_password'] . '</li>';
+     echo '<li>comment: '.  $rez['comment'] . '</li>';
+     echo '<li>tel: '.  $rez['tel'] . '</li>';
+     echo '<li>size: '.  $rez['size'] . '</li>';
+     echo '<li>type: '.  $rez['type'] . '</li>';
+     echo '<li>delivery: '.  $rez['delivery'] . '</li>';
+     echo '<li>salt: '.  $rez['salt'] . '</li>';
+     echo '<li>pepper: '.  $rez['pepper'] . '</li>';
+     echo '<li>olive: '.  $rez['olive'] . '</li>';
+     echo '<li>mushrooms: '.  $rez['mushrooms'] . '</li>';
+     echo '<li>cheese: '.  $rez['cheese'] . '</li>';
+     echo '<li>image: '.  $rez['image'] . '</li>';
+     echo '</ol>';
+
+     echo '<div style="display:flex ; align-items:center ; justify-content:center ; padding:1em">' ;
+          $ext = explode('.', $rez['image']);
+          $ext1 = count($ext)-1;
+          if (strtolower( $ext[$ext1]) != 'jpg' && strtolower( $ext[$ext1]) != 'jpeg' && strtolower( $ext[$ext1])!= 'png' && strtolower( $ext[$ext1])!= 'gif' && strtolower( $ext[$ext1])!= 'svg')
+                      echo '<a href="' . $rez['image'] . '" download>descarca</a>' ;
+          else
+                      echo '<img src="' . $rez['image'] . '" alt="my-photo" style="height: 11em ; border-radius: 10px ; box-shadow: 1px 1px 1.5px 1.5px gray" />' ;
+     echo '</div>' ;
+ }
+
+
+
+ // AFISAM din tabel datele introduse de user
+
+
+
+?>
+
+
+  </div>
+
+
+
+
 
   <div style="padding:1.5em 0 1.5em 0 ; margin:1.5em 0 ; text-align:center">
     <a href="moreInfo.php" style="border:1px solid DarkGoldenRod ;

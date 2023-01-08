@@ -1,4 +1,4 @@
-console.log("food tutorial");
+console.log("---food tutorial");
 //shopping cart
 //https://www.youtube.com/watch?v=YeFzkC2awTM   JavaScript Shopping Cart Tutorial for Beginners    web dev simplified
 
@@ -208,7 +208,9 @@ console.log("totalIf is : " , totalIf);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //fixed button on shop page
 var fixedBtn=document.getElementById('fixed-shop-btn');
-console.log("fixedBtn is : " , fixedBtn);
+
+
+console.log("!!! fixedBtn is : " , fixedBtn);
 fixedBtn.innerText="GET A PIZZA!";
 
 function changeTextBtn(event){

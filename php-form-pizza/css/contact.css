@@ -193,7 +193,7 @@ background-color: DarkGoldenRod;
 }
 
 .form-control input {
-	border: 2.5px solid DarkGoldenRod;
+	border: 2px solid DarkGoldenRod;
 	border-radius: 5px;
 	/* display: block; */
 	font-family: inherit;
@@ -206,6 +206,8 @@ background-color: DarkGoldenRod;
 	outline: 0;
 	border-color: #785807;
 }
+
+
 
 .form-control.success input {
 	border-color: #2ecc71;
@@ -359,6 +361,25 @@ background-color: DarkGoldenRod;
 input , textarea{
   color:DarkGoldenRod;
 }
+
+
+/*-------------------moreInfo.php style css--------------*/
+#showChosenPizza{
+  border:1px solid DarkGoldenRod ;
+  cursor: pointer;
+  margin-top:1.5em;
+  margin-bottom:1.5em;
+  padding:0.5em ;
+  border-radius:10px ;
+  box-shadow: 1px 1px 1.5px 1.5px gray;
+  text-align:center ;
+  font-size: 1rem ;
+  color:DarkGoldenRod;
+}
+
+
+
+
 
 
 /*---------------------------------terms and conditions-------------------------------------------------------------------------------*/
